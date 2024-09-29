@@ -2,27 +2,6 @@
 <html>
 <head>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WTG4QZ3ZR5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-WTG4QZ3ZR5');
-  </script>
-
-  <!-- Baidu -->
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?799f42b11954199aaa3de12337b3e661";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
@@ -202,7 +181,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Deep reinforcement learning (RL) is an effective method for decision-making and control tasks. However, RL-trained policies encounter the action fluctuation problem, where consecutive actions significantly differ despite minor variations in adjacent states. This problem results in actuators' wear and safety risk in real-world applications. To address the problem, we claim the two fundamental reasons causing action fluctuation, i.e. policy non-smoothness and observation noise, then propose the Fourier Lipschitz Smooth Policy Network (FlipNet). FlipNet adopts two innovative techniques to tackle the two reasons in a decoupled manner. Firstly, we prove the Jacobian norm is an approximation of Lipschitz constant and introduce a Jacobian regularization technique to enhance the smoothness of policy network. Secondly, we introduce a Fourier filter layer to deal with observation noise. The filter layer includes a trainable filter matrix that can automatically extract important observation frequencies and suppress noise frequencies. FlipNet can be seamlessly integrated into most existing RL algorithms as an actor network. Simulated and real-world experiments show that FlipeNet has excellent action smoothness and noise robustness, achieving a new state-of-the-art performance. The code and videos are available at https://iclr-anonymous-2025.github.io/FlipNet .
+            Deep reinforcement learning (RL) is an effective method for decision-making and control tasks. However, RL-trained policies encounter the action fluctuation problem, where consecutive actions significantly differ despite minor variations in adjacent states. This problem results in actuators' wear, safety risk, and performance reduction in real-world applications. To address the problem, we identify the two fundamental reasons causing action fluctuation, i.e. policy non-smoothness and observation noise, then propose the <strong>F</strong>ourier <strong>Lip</strong>schitz Smooth Policy <strong>Net</strong>work (<strong>FlipNet</strong>). FlipNet adopts two innovative techniques to tackle the two reasons in a decoupled manner. Firstly, we prove the Jacobian norm is an approximation of Lipschitz constant and introduce a Jacobian regularization technique to enhance the smoothness of policy network. Secondly, we introduce a Fourier filter layer to deal with observation noise. The filter layer includes a trainable filter matrix that can automatically extract important observation frequencies and suppress noise frequencies. FlipNet can be seamlessly integrated into most existing RL algorithms as an actor network. Simulated tasks on DMControl and a real-world experiment on vehicle-robot driving show that FlipeNet has excellent action smoothness and noise robustness, achieving a new state-of-the-art performance. The code and videos are publicly available at https://iclr-anonymous-2025.github.io/FlipNet .
           </p>
         </div>
       </div>
@@ -218,7 +197,7 @@
         <h2 class="title is-3">TL;DR</h2>
         <div class="content has-text-justified">
           <p>
-            The paper propose FlipNet, a policy network incorporating a Jacobian regularization technique and a Fourier filter layer. It can be used as policy network in most actor-critic RL algorithms to obtain smoother control action.
+            The paper propose FlipNet, a policy network incorporating a Jacobian regularization and a Fourier filter layer. It can be used as policy network in most actor-critic RL algorithms to obtain smoother control action in real-world applications.
           </p>
           <img src="static/images/Thumbnail.png"
             width="500"
@@ -230,6 +209,32 @@
 </section>
 
 <section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Reasons Identification of Action Fluctuation</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our paper identifies the two fundamental reasons that causes action fluctuation:
+          </p>
+          <ul>
+            <li>Non-smoothness of policy network</li>
+            <li>Existence of observation noise</li>
+          </ul>
+          Our paper proposes two techniques to address the two fundamental reasons causing action fluctuation, respectively.
+
+          <img src="static/images/two_reasons.png"
+            width="850"
+            class="center"/>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -245,7 +250,7 @@
           The two techniques respectively tackle the two fundamental reasons causing action fluctuation.
 
           <img src="static/images/FlipNet_structure.png"
-            width="850"
+            width="700"
             class="center"/>
           <br>
           FlipNet is applicable in almost all actor-critic RL algorithms, including DDPG, TD3, PPO, TRPO, SAC, and DSAC, etc.
@@ -293,12 +298,18 @@
 </section> -->
 
 
-<section class="section hero">
+<section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Mini-Vehicle Driving Task</h2>
         <div class="content has-text-justified">
+          <p>
+            This is a real-world application on the vehicle-robot driving task. The vehicle is controlled by the policy network, i.e. FlipNet, trained by RL.
+          </p>
+          <p>
+            Click to watch the video:
+          </p>
           <video poster="" id="tree" autoplay controls muted loop height="100%">
             <source src="static/videos/Mini_Vehicle_Driving.mp4"
             type="video/mp4">
@@ -309,7 +320,7 @@
   </div>
 </section>
 
-<section class="section hero is-light">
+<section class="section hero">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -321,7 +332,7 @@
             The code will be released after review.
           </p>
           <img src="static/images/packaging.png"
-            width="500"
+            width="420"
             class="center"/>
         </div>
       </div>
